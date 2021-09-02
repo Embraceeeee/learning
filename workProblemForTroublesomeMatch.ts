@@ -28,12 +28,61 @@ export const CORE_ERROR_NAMES = ["A", "B", "C", "D", "E", "F", "G"];
 export const ALL_ERROR_NAMES = ["TotalError", "A", "B", "C", "D", "E", "F", "G", "OtherError"];
 
 
+
+
 /**
- * 主函数
+ * 主函数 （版本2） 
+ * @param inputArray 
+ * @returns 
+ */
+export function convertAllErrorArray2(inputArray: InputItem[]): ErrorItem[] {
+
+  const coreErrorNames = cloneArray<string>(CORE_ERROR_NAMES);
+  const allErrorNames = cloneArray<string>(ALL_ERROR_NAMES);
+
+  const outPutArray: ErrorItem[] = [];
+  let totalErrorAmount=0;
+  let otherErrorAmount=0;
+
+  inputArray.forEach((input)=>{
+    totalErrorAmount += input.amount;
+    otherErrorAmount += input.amount;
+  });
+
+  // 七种核心异常的推入
+  coreErrorNames.forEach((errorName)=>{ 
+    const amount = getCoreErrorAmount(inputArray, errorName);
+    outPutArray.push(
+      {
+        error:errorName,
+        amount
+      }
+    ); 
+    // 用做减法的形式避免了getOtherErrorAmount函数里的循环
+    otherErrorAmount-=amount; 
+  });
+   // 总异常的推入
+   outPutArray.unshift({
+    error:allErrorNames[0],
+    amount:totalErrorAmount
+  });
+  // 其他异常的推入
+  outPutArray.push({
+    error:allErrorNames[allErrorNames.length-1],
+    amount:otherErrorAmount
+  });
+
+  return outPutArray;
+}
+
+
+
+/**
+ * 主函数(版本1)
  * @param inputArray 
  * @returns 返回API待实现的异常结果数组
  */
-export function convertAllErrorArray(inputArray: InputItem[]): ErrorItem[] {
+export function convertAllErrorArray1(inputArray: InputItem[]): ErrorItem[] {
 
   const coreErrorNames = cloneArray<string>(CORE_ERROR_NAMES);
   const allErrorNames = cloneArray<string>(ALL_ERROR_NAMES);
@@ -57,16 +106,15 @@ export function convertAllErrorArray(inputArray: InputItem[]): ErrorItem[] {
   return outPutArray;
 }
 
-
 function convertCoreErrorArray(
   inputArray: InputItem[],
   coreErrorNames: string[]
 ): ErrorItem[] {
   // 七种核心异常的推入
-  return coreErrorNames.map((error): ErrorItem => {
+  return coreErrorNames.map((errorName): ErrorItem => {
     return {
-      error,
-      amount: getCoreErrorAmount(inputArray, error)
+      error:errorName,
+      amount: getCoreErrorAmount(inputArray, errorName)
     };
   });
 }
@@ -132,11 +180,13 @@ interface ErrorItem {
 }
 
 
+
 // 输出结果
-console.log("result:", convertAllErrorArray([
+console.log("result:", convertAllErrorArray2([
   { error: "A", amount: 550, headNo: 1 },
   { error: "B", amount: 150, headNo: 1 },
   { error: "C", amount: 267, headNo: 1 },
   { error: "D", amount: 233, headNo: 1 },
   { error: "K", amount: 212, headNo: 1 }
 ]));
+
