@@ -13,6 +13,7 @@ function preorderTraversal_Iteration(root: TreeNode | null):number[] {
     return result;
   }
   stack.push(root);
+  // 每一个循环为一个中节点  
   while(stack.length!=0){
     // 获取栈顶部节点
     const node:TreeNode = stack[stack.length-1];
@@ -28,7 +29,6 @@ function preorderTraversal_Iteration(root: TreeNode | null):number[] {
     if(node.left!==null){
       stack.push(node.left);
     }
-
   }
   return result;
 
@@ -74,18 +74,14 @@ function inorderTraversal_Iteration(root: TreeNode | null):number[] {
  */
 function postorderTraversal_Iteration(root: TreeNode | null):number[] { 
 
-
   // 将前序遍历的中左右，改成中右左，对结果反一下值即可
-
   let stack:TreeNode[] = [];
   let result:number[] = [];
 
   if(root===null){
     return result;
   }
-
   stack.push(root);
-
   // 每个while循环都只访问一层树的  
   while(stack.length!==0) { 
 

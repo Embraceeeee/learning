@@ -17,7 +17,7 @@
    1. id ——一个字符串
    2. 与_index和_type组合时，可代表ES中一个特定的文档
 
-​    <img src="C:\Users\Z20061150\Desktop\work_log\es与mysql区别.png" alt="es与mysql区别"  />
+​    <img src=".\image\es与mysql区别.png" alt="es与mysql区别"  />
 
 
 
@@ -145,7 +145,7 @@
 
       
 
-      ![嵌套桶示例](C:\Users\Z20061150\Desktop\work_log\嵌套桶示例.jpg)
+      ![嵌套桶示例](.\image\嵌套桶示例.jpg)
 
    
 
