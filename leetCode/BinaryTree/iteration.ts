@@ -1,5 +1,4 @@
-
-
+import { TreeNode } from "./treenode";
 /**
  *  前序遍历（中左右）
  * @param root 

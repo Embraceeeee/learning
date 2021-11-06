@@ -1,3 +1,5 @@
+import { TreeNode } from "./treenode";
+
 function preorderTraversal_UnifiedIteration(root: TreeNode | null): number[] {
 
 

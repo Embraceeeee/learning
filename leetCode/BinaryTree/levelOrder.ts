@@ -1,3 +1,11 @@
+import { TreeNode } from "./treenode";
+
+/**
+ *  层序遍历   
+ *  主要用到队列，while是遍历层级。for循环让该层元素出队   
+ * @param root 
+ * @returns 
+ */
 function levelOrder(root: TreeNode | null):number[][]  {
 
   const queue: (TreeNode | null)[] = [];
