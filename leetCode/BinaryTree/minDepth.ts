@@ -1,19 +1,11 @@
 
 /*Definition for a binary tree node. **/
 
-
-class TreeNode {
-    val: number
-    left: TreeNode | null
-    right: TreeNode | null
-    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-        this.val = (val === undefined ? 0 : val)
-        this.left = (left === undefined ? null : left)
-        this.right = (right === undefined ? null : right)
-    }
-}
+import { TreeNode } from "./treenode";
 
 
+
+// 最小深度的二叉树问题 111
 
 
 // 用层序遍历 (队列) 
@@ -43,12 +35,15 @@ function minDepth(root: TreeNode | null): number {
             }
             // 当这个节点为子节点，记录当前节点的深度 
             if (node?.right == null && node?.left == null) {
-                depths.push(tempDepth);
+                // 其实这里可以直接return的 ，因为第一次碰到的话就是最小的路径，我们也是从高往下一层层遍历的
+                //depths.push(tempDepth);
+                return tempDepth;
             }
         }
 
     }
-    return Math.min(...depths);
+    //return Math.min(...depths);
+    return tempDepth;
 };
 
 
