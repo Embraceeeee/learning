@@ -8,16 +8,14 @@ function removeDuplicates(s: string): string {
     const stack: string[] = [];
     // 感觉相邻的可以用 栈  
     for (const char of s) {
-        // console.log(stack)
-        const preChar = stack[stack.length-1];
-        // 在 栈为空或者前一个元素与当前遍历的元素不相等时候，才推入
-        if (preChar == undefined || preChar != char) {
+
+        // 在栈里为空 或者前一个元素与当前遍历的元素不相等时候，才推入
+        if (stack.length==0 || stack[stack.length-1] != char) {
             stack.push(char);
         }else{
             // 记得将相等的前一个元素 从栈中删除
             stack.pop();            
         }
-       
     }
     return stack.join('');
 };
