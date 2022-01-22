@@ -7,33 +7,18 @@
  * @param tokens 
  * @returns 
  */
-
 function evalRPN(tokens: string[]): number {
 
     const stack: number[] = [];
     tokens.forEach((token) => {
-
-        console.log(stack);
-
-        if (Object.is(Number(token),NaN)) {
-        
-            stack.push(+token);
-
+        //  如果是运算符，计算并推入值   
+        if (token == '+' || token == '-' || token == '*' || token == '/') {
+            computeAndpushNumber(stack, token);
         } else {
-            if(stack.length<2){
-                throw new Error('input is invalid');
-            }
-
-            const afterNumber = stack.pop() as number;
-            const preNumber = stack.pop() as number;
-            switch (token) {
-                case '+': { stack.push(preNumber + afterNumber); break; };
-                case '-': { stack.push(preNumber - afterNumber); break; };
-                case '*': { stack.push(preNumber * afterNumber); break; };
-                case '/': { stack.push(Math.floor(preNumber / afterNumber)); break; };
-                default: { break; };
-            }
+        // 否则直接推入
+            stack.push(+token);
         }
+
     });
 
     return stack.pop() as number;
@@ -41,4 +26,32 @@ function evalRPN(tokens: string[]): number {
 
 };
 
-console.log(evalRPN(["2", "1", "+", "3", "*"]))
+
+/**
+ *  取出栈顶两个元素计算后并推入栈中
+ * @param stack 
+ * @param operator 
+ * @returns 
+ */
+function computeAndpushNumber(
+    stack: number[],
+    operator: string
+): void {
+
+    if (stack.length < 2) {
+        throw new Error('input is invalid');
+
+    }
+    const afterNumber = stack.pop() as number;
+    const preNumber = stack.pop() as number;
+    switch (operator) {
+
+        case '+': { stack.push(preNumber + afterNumber); break; };
+        case '-': { stack.push(preNumber - afterNumber); break; };
+        case '*': { stack.push(preNumber * afterNumber); break; };
+        case '/': { stack.push(parseInt((preNumber / afterNumber).toString())); break; };
+        default: { return; };
+    }
+}
+
+console.log(evalRPN(["4", "13", "5", "/", "+"]))
