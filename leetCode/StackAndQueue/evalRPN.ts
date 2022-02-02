@@ -67,8 +67,8 @@ function transfer(tokens: string[]) {
     const operatorsStack: string[] = [];
     const result: string[] = [];
     for (const token of tokens) {
-        console.log("operatorsStack:",operatorsStack)
-        console.log("result:",result)
+        console.log("operatorsStack:", operatorsStack)
+        console.log("result:", result)
         if (token != "+"
             && token != "-"
             && token != "*"
@@ -77,9 +77,10 @@ function transfer(tokens: string[]) {
             && token != ")"
 
         ) {
-            // 数字或者( 就推入 
+            // 数字就输出 result 
             result.push(token);
-        } else if (token == "(") { 
+        } else if (token == "(") {
+            // 左括号就 入栈  
             operatorsStack.push(token);
         }
         else if (token == ")") {
@@ -93,34 +94,20 @@ function transfer(tokens: string[]) {
 
         } else {
             // token 只剩下 +、-、*、/          
-            // 运算符的那么做一个比较优先级
-            if (operatorsStack.length == 0) {
-                operatorsStack.push(token);
-            } else {
-
-                let topValue = operatorsStack[operatorsStack.length - 1];
-                if (
-                     (topValue == "+" || topValue == "-" )
-                     && 
-                     (token == "*" || token == "/") ) {
-                    // 这两个优先级都挺高的 
-                    operatorsStack.push(token);
-                } else if (topValue == "(") {  
-                    // 假设这个为 ( 那么我们直接推入运算符
-                    operatorsStack.push(token);
-                }else{
-                    topValue = operatorsStack.pop() as string;
-                    result.push(operatorsStack.pop() as string );
-                    operatorsStack.push(token);
-
-                }
-
+            let topValue = operatorsStack[operatorsStack.length - 1];
+            //  将栈顶的元素，比自己优先级高或者相等的，就出栈并 输出至  result 
+            while (operatorsStack.length > 0 && !isHighPriority(topValue, token)) {
+                result.push(operatorsStack.pop() as string);
+                topValue = operatorsStack[operatorsStack.length - 1];
             }
-
-
+            // 运算符号要入栈，为了后面遇到下一个运算符时候能排到数字后面
+            operatorsStack.push(token);
         }
 
-
+    }
+    // 栈内剩余运算符统一出栈并输出  
+    while(operatorsStack.length!=0){
+        result.push(operatorsStack.pop() as string);
     }
 
     return result;
@@ -129,4 +116,42 @@ function transfer(tokens: string[]) {
 
 }
 
-console.log(transfer("2*(9+6/3-5)+4".split("")))
+
+
+/**
+ *  判断后一个运算符是否比前运算符的优先级更高  
+ * @param frontOperator 
+ * @param backOperator 
+ * @returns 
+ */
+function isHighPriority(
+    frontOperator: string,
+    backOperator: string
+): boolean {
+
+
+    if (frontOperator == "(") {
+        return true;
+    }
+    else if (frontOperator == "*" || frontOperator == "/") {
+        if (backOperator == "*" || backOperator == "/") {
+            return false;
+        } else {
+            return false;
+        }
+    } else if (frontOperator == "+" || frontOperator == "-") {
+        if (backOperator == "*" || backOperator == "/") {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+
+        throw new Error('栈内元素不满足规则，出现除+-*/(以外的元素~');
+    }
+
+
+
+}
+
+console.log(transfer("1/2+3+4*5".split("")))
