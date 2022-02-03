@@ -12,35 +12,28 @@ function maxSlidingWindow(nums: number[], k: number): number[] {
     const result: number[] = [];
     // 直接返回里面的和  
     if (k >= nums.length) {
-        return [sum(nums)];
+
+        return [Math.max(...nums)];
     }
 
     for (let i = 0; i < k; i++) { 
-        queue.push(nums[i]);
+        queue[i] = nums[i];
     }
-    result.push(sum(queue));         
+    console.log(queue)
+    result.push(Math.max(...queue));         
 
 
     for (let i = k; i < nums.length; i++) {  
 
         queue.shift();
         queue.push(nums[i]);
-        result.push(sum(queue));         
+        result.push(Math.max(...queue));        
     }
 
     return result;
 
 };
 
+console.log(maxSlidingWindow([1,3,-1,-3,5,3,6,7],3));
 
 
-
-function sum(nums: number[]): number {
-
-    return nums.reduce(
-        (preNums, curNums) => {
-            return preNums + curNums;
-        }, 0
-    );
-
-}
