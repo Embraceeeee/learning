@@ -18,11 +18,9 @@ function evalRPN(tokens: string[]): number {
             // 否则直接推入
             stack.push(+token);
         }
-
     });
 
     return stack.pop() as number;
-
 
 };
 
@@ -57,13 +55,14 @@ function computeAndpushNumber(
 // console.log(evalRPN(["4", "13", "5", "/", "+"]));
 
 
-
-
-// 加餐：   中缀表达式转后缀表达式  
-function transfer(tokens: string[]) {
+/**
+ * // 加餐： 中缀表达式转后缀表达式  
+ * @param tokens 
+ * @returns 
+ */
+function transferPostfixExpression(tokens: string[]) {
 
     // 如 ((a+b)*c)+d*e == > ab+c*de*+  
-
     const operatorsStack: string[] = [];
     const result: string[] = [];
     for (const token of tokens) {
@@ -93,7 +92,8 @@ function transfer(tokens: string[]) {
             }
 
         } else {
-            // token 只剩下 +、-、*、/          
+            // token 只剩下 +、-、*、/  
+            // 运算符比较优先级 ， 相应出栈、输出 result         
             let topValue = operatorsStack[operatorsStack.length - 1];
             //  将栈顶的元素，比自己优先级高或者相等的，就出栈并 输出至  result 
             while (operatorsStack.length > 0 && !isHighPriority(topValue, token)) {
@@ -103,16 +103,12 @@ function transfer(tokens: string[]) {
             // 运算符号要入栈，为了后面遇到下一个运算符时候能排到数字后面
             operatorsStack.push(token);
         }
-
     }
     // 栈内剩余运算符统一出栈并输出  
-    while(operatorsStack.length!=0){
+    while (operatorsStack.length != 0) {
         result.push(operatorsStack.pop() as string);
     }
-
     return result;
-
-
 
 }
 
@@ -154,4 +150,4 @@ function isHighPriority(
 
 }
 
-console.log(transfer("1/2+3+4*5".split("")))
+console.log(transferPostfixExpression("a+b*c+(d*e+f)*g".split("")))
