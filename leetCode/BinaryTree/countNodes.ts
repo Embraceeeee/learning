@@ -1,5 +1,8 @@
 import { TreeNode } from "./treenode";
 
+
+
+
 /**
  * #222 完全二叉树的节点个数  
  * @param root 
@@ -7,6 +10,7 @@ import { TreeNode } from "./treenode";
 function countNodes(root: TreeNode | null): number {
 
 
+    // 刚开始的思路 
     // 根据根节点去推有多少个节点，感觉要遍历，并且找到最底层即可
     // 可以先确定有多少层
     /* 
@@ -23,7 +27,6 @@ function countNodes(root: TreeNode | null): number {
 
     */
 
-    
     // 用递归来做 
     if (root == null) {
         return 0;
@@ -56,6 +59,18 @@ function countNodes(root: TreeNode | null): number {
 };
 
 
-console.log()
 
 
+/**
+ * 遍历 普通二叉树 的方法 （递归）
+ * @param root 
+ */
+function countNodes1(root: TreeNode | null): number {
+
+    if (root == null) {
+        return 0;
+    }
+
+    return countNodes1(root.left)+countNodes1(root.right)+1;
+
+}
