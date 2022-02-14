@@ -35,19 +35,10 @@ function merge(
     arrayA: ArrayType,
     arrayB: ArrayType
 ): ArrayType {
+    
 
-
-
-
-
-
-
-
+    
 
     return [];
 
 }
-
-
-
-

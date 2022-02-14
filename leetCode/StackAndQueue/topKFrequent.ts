@@ -25,8 +25,7 @@ class PriorityQueue {
         // 小顶堆  排序 (上浮)
         // compare(parent,index)>0表示parent的值比刚index的值大，
         // 然而我们用的是小顶堆，小号排前，parent需要小的
-        while (parent >= 0 && this.compare(parent, index) > 0) {
-
+        while (parent >= 0 && this.compare(parent, index) > 0) { 
             [this.queue[index], this.queue[parent]] = [this.queue[parent], this.queue[index]];
             // 还以为会是index--；应该就是 比较父节点和子节点就好了
             // 一层一层往上判断，大了就让小的节点上
@@ -49,17 +48,13 @@ class PriorityQueue {
         let selectedChild = this.compare(left, left + 1) > 0 ? left + 1 : left;
         // 下沉 （大元素往下沉）
         while (selectedChild !== undefined && this.compare(index, selectedChild) > 0) {
-
             //  index是父节点， selectedChild 为子节点中较小的 
             [this.queue[index], this.queue[selectedChild]] = [this.queue[selectedChild], this.queue[index]];
-
             index = selectedChild;
             //  左子节点
             left = 2 * index + 1;
             selectedChild = this.compare(left, left + 1) > 0 ? left + 1 : left;
-
         }
-
         return ret;
     }
 
@@ -69,23 +64,20 @@ class PriorityQueue {
 
 
 
-
     private compare(index1: number, index2: number) {
 
         if (this.queue[index1] === undefined) {
             return 1;
         }
-
         if (this.queue[index2] === undefined) {
             return -1;
         }
-
         return this.compareFN(
             this.queue[index1],
             this.queue[index2]
         );
-
     }
+
 
     private getParentIndex(curIndex: number) {
         return Math.floor((curIndex - 1) / 2);
@@ -106,7 +98,7 @@ function topKFrequent(nums: number[], k: number): number[] {
         const freq: undefined | number = map.get(num);
         freq === undefined ? map.set(num, 1) : map.set(num, freq + 1);
     }
-    console.log(map)
+    // 进入优先队列排序（队列的长度:k）  
     const priorityQueue: PriorityQueue = new PriorityQueue(
         // 按照频率排序
         (a: [number, number], b: [number, number]) => a[1] - b[1]
@@ -117,15 +109,9 @@ function topKFrequent(nums: number[], k: number): number[] {
             priorityQueue.pop();
         }
     }
-
-
     // 取出前 k 个元素 
-    // for (let i = 0; i < priorityQueue.size(); i++) {
-    //     result.push(priorityQueue.pop()[0]);
-    // }
-    // 上面的priorityQueue.pop() 会影响size()
     const size = priorityQueue.size();
-    
+
     for (let i = 0; i < size; i++) {
         result.push(priorityQueue.pop()[0]);
     }
