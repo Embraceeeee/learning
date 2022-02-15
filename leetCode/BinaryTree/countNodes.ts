@@ -71,6 +71,37 @@ function countNodes1(root: TreeNode | null): number {
         return 0;
     }
 
-    return countNodes1(root.left)+countNodes1(root.right)+1;
+    return countNodes1(root.left) + countNodes1(root.right) + 1;
+
+}
+
+
+function countNodes2(root: TreeNode | null): number {
+
+
+    // 用层序遍历来做吧~ 
+    let count = 0;
+    const queue: TreeNode[] = [];
+    root != null && queue.push(root);
+
+    while (queue.length != 0) {
+
+        // 此层的节点数量
+        const nodesNumber = queue.length;
+        for (let i = 0; i < nodesNumber; i++) {
+            
+            count++;
+            const node = queue.shift();
+            node?.left != null && queue.push(node.left);
+            node?.right != null && queue.push(node.right);
+            
+        }
+    }
+    return count;
+
+
+
+
+
 
 }
