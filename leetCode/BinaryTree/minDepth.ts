@@ -56,6 +56,7 @@ var test = new TreeNode(3,
 );
 
 
+
 var test1 = new TreeNode(3,
     null,
     new TreeNode(20,
@@ -63,6 +64,8 @@ var test1 = new TreeNode(3,
         new TreeNode(7)
     )
 );
+
+
 
 console.log(minDepth(test1));
 
