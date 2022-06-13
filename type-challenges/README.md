@@ -12,7 +12,7 @@
 - [x] [获取元组长度](length.ts)
 - [x] [实现 Exclude](exclude.ts)
 - [x] [实现 Awaited](awaited.ts)
-- [ ] 实现 If
+- [x] [实现 If](if.ts)
 - [ ] 实现 Concat
 - [ ] 实现 Includes
 - [ ] 实现 Push
