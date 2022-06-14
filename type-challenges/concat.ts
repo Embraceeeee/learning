@@ -7,6 +7,9 @@
  */
 
 // 类型定义里也可以用展开操作符号
+
 type Concat<T1 extends unknown[], T2 extends unknown[]> = [...T1, ...T2];
 
 type Result = Concat<[1,2,], [2]>;  
+
+

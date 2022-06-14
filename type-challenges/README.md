@@ -14,7 +14,7 @@
 - [x] [实现 Awaited](awaited.ts)
 - [x] [实现 If](if.ts)
 - [x] [实现 Concat](concat.ts)
-- [ ] 实现 Includes
+- [x] [实现 Includes](includes.ts)
 - [ ] 实现 Push
 - [ ] 实现 Unshift
 - [ ] 实现 Parameters
