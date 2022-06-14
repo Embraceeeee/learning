@@ -13,7 +13,7 @@
 - [x] [实现 Exclude](exclude.ts)
 - [x] [实现 Awaited](awaited.ts)
 - [x] [实现 If](if.ts)
-- [ ] 实现 Concat
+- [x] [实现 Concat](concat.ts)
 - [ ] 实现 Includes
 - [ ] 实现 Push
 - [ ] 实现 Unshift
