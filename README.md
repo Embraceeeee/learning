@@ -4,7 +4,7 @@
 
 ## Type Challenges
 
-[typescript 类型挑战](type-challenges/README.md)
+[Typescript 类型挑战](type-challenges/README.md)
 
 ## Work Problem
 

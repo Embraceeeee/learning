@@ -15,8 +15,8 @@
 - [x] [实现 If](if.ts)
 - [x] [实现 Concat](concat.ts)
 - [x] [实现 Includes](includes.ts)
-- [ ] 实现 Push
-- [ ] 实现 Unshift
+- [x] [实现 Push](push.ts)
+- [x] [实现 Unshift](unshift.ts)
 - [ ] 实现 Parameters
 
 ## 中等
