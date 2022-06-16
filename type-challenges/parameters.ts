@@ -8,9 +8,9 @@
  * 
  */
 
-type test2 = (...args:any)=>number;
+type test2 = (...args: any) => number;
 
-const test2Function:test2 = (b:string)=>{return +b};
+const test2Function: test2 = (b: string) => { return +b };
 
 console.log(typeof test2Function)
 
@@ -18,10 +18,10 @@ console.log(typeof test2Function)
 // 看了Return type的定义才有了思路  
 // 迷迷糊糊写对了
 // TODO: 展开符号+变量，类型为什么会系数组？ 
-type MyParameters<T extends (...args: any) => any> = 
+type MyParameters<T extends (...args: any) => any> =
     T extends (...args: infer R) => any ? R : never;
 
-    
+
 
 // type a1 = MyParameters<typeof test2Function>;
 
@@ -29,4 +29,15 @@ type MyParameters<T extends (...args: any) => any> =
 // type a2<T extends number[]> = [...T];
 
 // type t2 = a2<[1,2,3]>;
+
+
+const a1 = (...args: any) => {
+    console.log(typeof args);
+    console.log(args);
+    console.log(...args);
+}
+
+
+// const p1: number[] = [2, 5];
+// a1(1, '2');
 
