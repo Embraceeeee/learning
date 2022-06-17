@@ -17,7 +17,7 @@
 - [x] [实现 Includes](includes.ts)
 - [x] [实现 Push](push.ts)
 - [x] [实现 Unshift](unshift.ts)
-- [ ] 实现 Parameters
+- [x] [实现 Parameters](parameters.ts)
 
 ## 中等
 

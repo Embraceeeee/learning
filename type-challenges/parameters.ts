@@ -8,36 +8,15 @@
  * 
  */
 
-type test2 = (...args: any) => number;
-
-const test2Function: test2 = (b: string) => { return +b };
-
-console.log(typeof test2Function)
 
 
-// 看了Return type的定义才有了思路  
-// 迷迷糊糊写对了
-// TODO: 展开符号+变量，类型为什么会系数组？ 
+// ... args 这种 rest 变量需为数组类型，args为数组类型，正好利用rest变量、infer、条件类型来求得函数的参数类型（用[]包起来的）
 type MyParameters<T extends (...args: any) => any> =
     T extends (...args: infer R) => any ? R : never;
 
 
 
-// type a1 = MyParameters<typeof test2Function>;
 
 
-// type a2<T extends number[]> = [...T];
 
-// type t2 = a2<[1,2,3]>;
-
-
-const a1 = (...args: any) => {
-    console.log(typeof args);
-    console.log(args);
-    console.log(...args);
-}
-
-
-// const p1: number[] = [2, 5];
-// a1(1, '2');
 
