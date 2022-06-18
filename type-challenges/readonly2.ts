@@ -19,6 +19,7 @@ todo.description = "barFoo" // Error: cannot reassign a readonly property
 todo.completed = true // OK
  */
 
+
 // 想到两种类型 做 & 的方式 还可以设置 原始类型，如下 = keyof T，当没有
 // 输入第二个类型时候则于readonly效果相同
 type MyReadOnly2<T extends Object, K extends keyof T = keyof T> = {
@@ -26,6 +27,11 @@ type MyReadOnly2<T extends Object, K extends keyof T = keyof T> = {
 } & {
   [P in keyof T as P extends K ? never : P]: T[P];
 };
+
+
+
+
+
 
 
 
