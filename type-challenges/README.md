@@ -21,6 +21,6 @@
 
 ## 中等
 
-- [ ] 获取函数返回类型
+- [x] [获取函数返回类型](returnType.ts)
 - [x] [实现 Omit](omit.ts)
 - [ ] etc
