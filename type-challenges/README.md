@@ -23,4 +23,5 @@
 
 - [x] [获取函数返回类型](returnType.ts)
 - [x] [实现 Omit](omit.ts)
-- [ ] etc
+- [x] [实现readonly2](readonly2.ts)
+- [ ] etc 
