@@ -54,5 +54,5 @@ const t1: t = {
   y: "hey",
 };
 // t1.x.a = {a1:2};  // Error
-// t1.x.a.a1 = 3;    // Error   
+// t1.x.a.a1 = 3;    // Error                                   
 
