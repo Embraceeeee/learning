@@ -26,4 +26,6 @@
 - [x] [实现readonly2](readonly2.ts)
 - [x] [实现深度readonly](readonly-deep.ts)
 - [x] [元组转合集](tupleToUnion.ts)
+- [ ] [可串联构造器](chainable.ts)
+- [ ] etc
 - [ ] etc
