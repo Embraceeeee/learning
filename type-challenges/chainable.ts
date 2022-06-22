@@ -30,8 +30,25 @@
  */
 
 // 感覺得用上泛型的，被例子誤導了，一隻在想不用泛型的如何做
-interface Chainable {
-    o1:{};
-  option(key: string, value: any):Object;
-  get():Object;
+ type Chainable<O={}>  = {
+
+  option<K extends string,V>(key: K , value:V):Chainable<O & {[P in K]:V}>;
+  get():O;
+  
 }
+
+// 测试 
+
+declare const config: Chainable
+const result = config
+ .option('foo', 123)
+ .option('name', 'type-challenges')
+ .option('bar', { value: 'Hello World' })
+ .get();
+
+
+
+
+
+
+
