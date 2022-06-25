@@ -30,5 +30,6 @@
 - [x] [最后一个元素](last.ts)
 - [x] [出堆](pop.ts)
 - [x] [Promise.all](promiseAll.ts)
+- [ ] [Type Lookup](lookup.ts)
 - [ ] etc
 - [ ] etc
