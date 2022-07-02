@@ -37,23 +37,15 @@ const t1 = PromiseAll([promise1, promise2, promise3] as const);
 
 
 // 返回数组带值的类型
-
 // type ArrBk<T extends number[]> = { [K in keyof T]: T[K] };
-
 // type t3 = ArrBk<[1,2,3]>;
 
 // keyof 一个数组 返回索引的联合类型
-
 // type  Arr<T extends number[]> = keyof T;
-
 // type t2 = Arr<[1,2,5]>
-
 // const n:t2 = 0|1|5; // 0|1|5 也能过很奇怪
 
 // T[number] 返回值的联合类型
-
 // type T5<T extends any[]> = T[number];
-
 // type aaa = T5<[1,2,5]>
-
 // const o:aaa = 1;
