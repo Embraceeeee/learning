@@ -31,5 +31,5 @@
 - [x] [出堆](pop.ts)
 - [x] [Promise.all](promiseAll.ts)
 - [x] [Type Lookup](lookup.ts)
-- [ ] etc
+- [x] [TrimLeft](trimLeft.ts)
 - [ ] etc

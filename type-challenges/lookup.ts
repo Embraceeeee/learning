@@ -48,13 +48,13 @@ interface Dog {
   color: "brown" | "white" | "black";
 }
 
-type MyDog = LookUp<Cat | Dog, "cat" >; 
+type MyDog = LookUp<Cat | Dog, "dog" >; 
 
 
 // test1和test2 不生效但是 test3这样写就生效了，会不会只有泛型才能用extends       
 // 所以上面第一次的写法之所以不行，是因为 ('cat'|'dog') extends 'cat' 这样的联合值extend的话是不会分布式的，会直接返回false
 // 除非说像test3写入泛型里面，然后整个 T 去 extends； 我们传入T为 联合类型值  才有分布式  
-                    
+
 type test1 = ('cat'|'dog') extends 'cat'?'cat':never;
 type inputType = 'cat'|'dog';
 type test2 = inputType extends 'cat'?'cat':never;
