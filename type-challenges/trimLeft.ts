@@ -8,7 +8,8 @@
 
 // 应该是考察 Template Literal Types
 
-type TrimLeft<T extends String> = T extends ` ${infer R}` ? TrimLeft<R> : T;
+type TrimLeft<T extends String> = T extends `${" "|"\n"|"\t"}${infer R}` ? TrimLeft<R> : T;
 
 
-type trimed = TrimLeft<'  Hello World  '>; 
+type trimed = TrimLeft<'     Hello World  '>; 
+
