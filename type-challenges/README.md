@@ -32,4 +32,5 @@
 - [x] [Promise.all](promiseAll.ts)
 - [x] [Type Lookup](lookup.ts)
 - [x] [TrimLeft](trimLeft.ts)  
+- [x] [Trim](trim.ts)   
 - [ ] etc
