@@ -23,8 +23,4 @@ type TrimAn<T> = T extends `${WhiteSpace}${infer R}`
   : T extends `${infer L}${WhiteSpace}`
   ? TrimAn<L>
   : T;
-
-
-  
 type trimed2 = TrimAn<"  Hello World  ">;
-
