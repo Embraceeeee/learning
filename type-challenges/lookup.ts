@@ -55,7 +55,7 @@ type MyDog = LookUp<Cat | Dog, "dog" >;
 // 所以上面第一次的写法之所以不行，是因为 ('cat'|'dog') extends 'cat' 这样的联合值extend的话是不会分布式的，会直接返回false
 // 除非说像test3写入泛型里面，然后整个 T 去 extends； 我们传入T为 联合类型值  才有分布式  
 
-type test1 = ('cat'|'dog') extends 'cat'?'cat':never;
+type test1 = ('cat'|'dog') extends 'cat'?'cat':'dog';
 type inputType = 'cat'|'dog';
 type test2 = inputType extends 'cat'?'cat':never;
 
