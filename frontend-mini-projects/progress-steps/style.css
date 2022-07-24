@@ -1,0 +1,106 @@
+/*  定义元素  */
+
+:root {
+  /*  定义变量时候会在前面加 --   */
+  --line-border-blue: #3498db;
+  --line-border-grey: #e0e0e0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  width: 350px;
+  position: relative;
+}
+
+.progress-container::before {
+  /*  这里设置了content才在页面上看得到   */
+  content: "";
+
+  background-color: var(--line-border-grey);
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.progress {
+  background-color: var(--line-border-blue);
+  /*  它以 container 确定 父元素   */
+  /* 有点类似悬浮上面的感觉，其他并行的div不会受这个div影响了 */
+  position: absolute;
+  height: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0%;
+  z-index: -1;
+  transition: width 0.3s ease;
+}
+
+.circle {
+  background-color: #ffffff;
+  color: #999;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--line-border-grey);
+  transition: border-color 0.3s ease;
+}
+
+.circle.active {
+  border-color: var(--line-border-blue);
+}
+
+.btn {
+  background-color: var(--line-border-blue);
+
+  color: white;
+  border-radius: 5px;
+  width: 100px;
+  padding: 8px 30px;
+  border: 0;
+  font-size: 14px;
+
+  margin: 5px;
+}
+
+.btn:active {
+  /*   缩小 0.98  */
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  /*   多个轮廓属性    */
+  outline: 0;
+}
+
+.btn:disabled {
+  background-color: var(--line-border-grey);
+  cursor: not-allowed;
+}
