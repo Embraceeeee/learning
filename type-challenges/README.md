@@ -34,3 +34,5 @@
 - [x] [TrimLeft](trimLeft.ts)  
 - [x] [Trim](trim.ts)   
 - [x] [Capitalize](capitalize.ts)   
+- [x] [Replace](replace.ts)   
+- [ ] ......
