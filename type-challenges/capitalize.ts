@@ -44,8 +44,7 @@ type CapitalizedChars = {
 type Capitalize1<T> = T extends `${infer FirstLetter}${infer RestLetter}`
   ? `${FirstLetter extends keyof CapitalizedChars
       ? CapitalizedChars[FirstLetter]
-      : FirstLetter}
-      ${RestLetter}`
+      : FirstLetter}${RestLetter}`
   : T;
 
 
