@@ -35,4 +35,6 @@
 - [x] [Trim](trim.ts)   
 - [x] [Capitalize](capitalize.ts)   
 - [x] [Replace](replace.ts)   
+- 
+- [x] [追加参数](append-argument.ts)
 - [ ] ......
