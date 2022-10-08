@@ -38,5 +38,5 @@
 - 
 - [x] [追加参数](append-argument.ts)
 - [x] [Permutation](permutation.ts)
-- [ ] [Length of String](length-of-string.ts)
+- [x] [Length of String](length-of-string.ts)
 - [ ] ......
