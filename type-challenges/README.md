@@ -40,4 +40,5 @@
 - [x] [Permutation](permutation.ts)
 - [x] [Length of String](length-of-string.ts)
 - [x] [Flatten](flatten.ts)
+- [x] [Append to object](append-to-object.ts)     
 - [ ] ......

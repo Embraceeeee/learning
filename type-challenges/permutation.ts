@@ -22,4 +22,4 @@ type perm = Permutation<'A' | 'B'|'C' >;
 // T extends U ==> 'A' extends 'A'|'B' ==> ['A',...Permutation<'B'>] ==> ['A','B']  |  'B' extends 'A'|'B' ==> ['B',...Permutation<'A'>] ==> ['B','A']     
 
 
-type test = Exclude<'A'|'B','B'>
+// type test = Exclude<'A'|'B','B'>
