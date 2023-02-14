@@ -35,8 +35,6 @@ function sortedSquares(nums: number[]): number[] {
 }
 */
 
-
-
 function sortedSquares1(nums: number[]): number[] {
   let left = 0,
     right = nums.length - 1;
