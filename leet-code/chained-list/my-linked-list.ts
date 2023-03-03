@@ -3,13 +3,13 @@
  *  @see https://programmercarl.com/0707.%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8.html#%E4%BB%A3%E7%A0%81
  *
  */
-class MyLinkedList {
+ class MyLinkedList {
   // 单链表的节点
-  private dummyHead: MyListNode;
+  private dummyHead: ListNode;
   private length;
 
   constructor() {
-    this.dummyHead = new MyListNode(-1, null);
+    this.dummyHead = new ListNode(-1, null);
     this.length = 0;
   }
 
@@ -19,14 +19,14 @@ class MyLinkedList {
     }
     let cur = this.dummyHead;
     while (index--) {
-      cur = <MyListNode>cur?.next;
+      cur = <ListNode>cur?.next;
     }
     return cur.next?.val ?? -1;
   }
 
   addAtHead(val: number): void {
     const head = this.dummyHead.next;
-    this.dummyHead.next = new MyListNode(val, head);
+    this.dummyHead.next = new ListNode(val, head);
     this.length++;
   }
 
@@ -35,7 +35,7 @@ class MyLinkedList {
     while (cur.next != null) {
       cur = cur.next;
     }
-    cur.next = new MyListNode(val);
+    cur.next = new ListNode(val);
     this.length++;
   }
 
@@ -51,10 +51,10 @@ class MyLinkedList {
     // 遍历至上一个节点
     let cur = this.dummyHead;
     while (index--) {
-      cur = <MyListNode>cur?.next;
+      cur = <ListNode>cur?.next;
     }
     const next = cur?.next;
-    cur.next = new MyListNode(val, next);
+    cur.next = new ListNode(val, next);
     this.length++;
   }
   deleteAtIndex(index: number): void {
@@ -66,7 +66,7 @@ class MyLinkedList {
     // 遍历至上一个节点
     let cur = this.dummyHead;
     while (index--) {
-      cur = <MyListNode>cur?.next;
+      cur = <ListNode>cur?.next;
     }
 
     const next = cur?.next;
@@ -74,16 +74,6 @@ class MyLinkedList {
     this.length--;
   }
 }
-class MyListNode {
-  val: number;
-  next: MyListNode | null;
-
-  constructor(val?: number, next?: MyListNode | null) {
-    this.val = val ?? 0;
-    this.next = next ?? null;
-  }
-}
-
 const test = new MyLinkedList();
 test.addAtHead(1);
 test.addAtTail(3);
